@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+  <!--
+
+  Use java property log4j.configurationFile to specify log4j2.xml location
+  if not available in classpath
+
+  -    Dlog4j.configurationFile="/Users/petervannes/NetBeansProjects/JSONLogger_2/src/mann/java/resources/log4j2.xml"
+
+  -->
+  <configuration status="trace">
+     <Properties>
+        <Property name="log-path">C:/NYL/logs</Property>
+     </Properties>
+     <appenders>
+        <RollingFile name="RollingFile" fileName="${log-path}/jsonlogger.json"
+                  filePattern="${log-path}/%d{yyyyMMdd}_jsonlogger-%i.json" >
+           <PatternLayout>
+              <pattern>%m%n</pattern>
+           </PatternLayout> 
+           <Policies>
+              <TimeBasedTriggeringPolicy />
+              <SizeBasedTriggeringPolicy size="900 KB" />
+           </Policies>
+           <DefaultRolloverStrategy max="4"/>
+        </RollingFile>
+     </appenders>
+     <Loggers>
+        <Logger name="JSONLogger" level="debug" additivity="false">
+           <AppenderRef ref="RollingFile" />
+        </Logger>
+        <Root level="debug">
+           <AppenderRef ref="RollingFile" />
+        </Root>
+     </Loggers>
+     <JSONLayout complete="true" compact="false"/>
+  </configuration>

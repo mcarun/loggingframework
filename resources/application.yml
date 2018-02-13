@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: prod
+
+logging:
+  level:
+    ROOT: ERROR
+    org.springframework: ERROR
+    org.springframework.data: ERROR
+    com.mkyong: INFO
+    org.mongodb: ERROR
+  file: 
